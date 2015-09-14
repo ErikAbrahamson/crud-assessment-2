@@ -5,7 +5,6 @@ var should = chai.should();
 
 chai.use(chaiHttp);
 
-
 describe('Exercises', function() {
 
   it('should list ALL exercises on /api/v1/exercisess GET', function(done) {

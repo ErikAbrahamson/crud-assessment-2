@@ -5,7 +5,7 @@ var URI = uriUtil.formatMongoose(process.env.MONGO_URI);
 
 var exercise = new Schema({
   name: String,
-  description: Number,
+  description: String,
   tags: [String]
 });
 
