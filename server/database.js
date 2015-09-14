@@ -3,7 +3,7 @@ var uriUtil = require('mongodb-uri');
 var Schema = mongoose.Schema;
 var URI = uriUtil.formatMongoose(process.env.MONGO_URI);
 
-var Exercise = new Schema({
+var exercise = new Schema({
   name: String,
   description: Number,
   tags: [String]

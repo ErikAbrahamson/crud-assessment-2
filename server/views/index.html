@@ -8,7 +8,38 @@
   <div class="container">
 
     <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    <form method="post" action="/api/exercises">
+      <div class="form-group">
+        <label for="name">Exercise name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Exercise description</label>
+        <input type="text" class="form-control" name="description" id="description" placeholder="description">
+      </div>
+      <div class="form-group">
+        <label for="tags">Exercise tags</label>
+        <input type="text" class="form-control" name="tags" id="tags" placeholder="tags">
+      </div>
+      <button id="submit" type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <br><hr>
+    <div>
+   <table class="table">
+     <thead>
+       <tr>
+         <th>Name</th>
+         <th>Age</th>
+         <th>Breed</th>
+       </tr>
+     </thead>
+     <tbody id="exercise-list">
+     </tbody>
+   </table>
+ </div>
+
+</div>
+
 
   </div>
 
