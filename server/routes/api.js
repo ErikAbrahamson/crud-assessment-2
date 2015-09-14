@@ -24,9 +24,9 @@ router.get('/exercises', function(req, res, next) {
 
 // API Get Single exercise
 router.get('/exercises/:id', function(req, res, next) {
-  var query = {'_id': {'$oid': req.params.id}};
-  exercise.findOne(query, function(err, dog) {
-    res.json(dog);
+  var query = {'_id': req.params.id};
+  exercise.findOne(query, function(err, exercise) {
+    res.json(exercise);
   });
 });
 
@@ -34,8 +34,8 @@ router.get('/exercises/:id', function(req, res, next) {
 router.put('/exercises/:id', function(req, res, next) {
   var query = {'_id':req.params.id},
     update = req.body, options = {new: true};
-    exercise.findOneAndUpdate(query, update, options, function(err, dog) {
-      res.json(dog);
+    exercise.findOneAndUpdate(query, update, options, function(err, exercise) {
+      res.json(exercise);
     }
   );
 });
@@ -43,8 +43,8 @@ router.put('/exercises/:id', function(req, res, next) {
 // API Delete Single exercise
 router.delete('/exercises/:id', function(req, res) {
   var query = {'_id': {'$oid': req.params.id}};
-  exercise.findOneAndRemove(query, function(err, dog) {
-    res.json(dog);
+  exercise.findOneAndRemove(query, function(err, exercise) {
+    res.json(exercise);
   });
 });
 
