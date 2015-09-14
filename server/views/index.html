@@ -8,7 +8,7 @@
   <div class="container">
 
     <h1>{{ title }}</h1>
-    <form method="post" action="/api/exercises">
+    <form method="post" action="/api/v1/exercises">
       <div class="form-group">
         <label for="name">Exercise name</label>
         <input type="text" class="form-control" name="name" id="name" placeholder="name">
@@ -29,8 +29,8 @@
      <thead>
        <tr>
          <th>Name</th>
-         <th>Age</th>
-         <th>Breed</th>
+         <th>Description</th>
+         <th>Tags</th>
        </tr>
      </thead>
      <tbody id="exercise-list">
