@@ -1,9 +1,9 @@
 $(document).on('ready', function() {
   console.log('Client JS Loaded');
-  listDogs();
+  listExercises();
 });
 
-function listDogs(){
+function listExercises(){
   $.get('/api/v1/exercises', function(data){
     for (var i = 0; i < data.length; i++) {
       $('#exercise-list').prepend(

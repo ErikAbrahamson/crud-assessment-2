@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
+var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
 var exercise = mongoose.model('exercises');
 
 // SPA Render
@@ -17,9 +17,10 @@ router.post('/exercises', function(req, res, next) {
 
 // API Get Collection
 router.get('/exercises', function(req, res, next) {
-  exercise.find(function(err, exercises) {
-    res.json(exercises);
-  });
+  User.findQ()
+    .then(function (result) { res.json(result) })
+    .catch(function (err) {res.send(err) })
+    .done();
 });
 
 // API Get Single exercise
