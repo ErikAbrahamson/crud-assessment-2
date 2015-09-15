@@ -17,9 +17,13 @@ router.post('/exercises', function(req, res, next) {
 
 // API Get Collection
 router.get('/exercises', function(req, res, next) {
-  User.findQ()
-    .then(function (result) { res.json(result) })
-    .catch(function (err) {res.send(err) })
+  exercise.findQ()
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.send(err);
+    })
     .done();
 });
 
