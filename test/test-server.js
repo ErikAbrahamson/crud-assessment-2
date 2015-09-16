@@ -2,6 +2,7 @@ var chai = require('chai'),
   chaiHttp = require('chai-http'),
   server = require('../server/app'),
   should = chai.should(),
+  mongoose = require('mongoose');
   Exercise = require('../server/models/exercise');
 
 chai.use(chaiHttp);
@@ -26,7 +27,7 @@ describe('Exercises', function() {
     var testExercise = new Exercise({
       name: 'Mocha Test',
       description: 'Mocha Description',
-      tags: 'tag'
+      tags: ['tag','another tag']
     });
     testExercise.save(function(err, data) {
       chai.request(server)
@@ -58,7 +59,7 @@ describe('Exercises', function() {
           });
       });
   });
-  // Delete
+  // Delete single
   it('should delete a single exercise', function(done){
     chai.request(server)
       .get('/api/v1/exercises/')

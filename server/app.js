@@ -1,12 +1,15 @@
 // *** main dependencies *** //
 var express = require('express');
+var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
-var config = require('./_config');
+
+// *** connect to MongoDB thru Mongoose *** //
+mongoose.connect('mongodb://localhost/exercises');
 
 // *** routes *** //
 var routes = require('./routes/index.js');

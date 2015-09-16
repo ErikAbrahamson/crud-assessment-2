@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
 
 var Exercise = new Schema({
   name: String,
@@ -7,5 +7,4 @@ var Exercise = new Schema({
   tags: [String]
 });
 
-mongoose.connect('mongodb://localhost/exercises');
 module.exports = mongoose.model('exercises', Exercise);
