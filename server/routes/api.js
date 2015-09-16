@@ -51,13 +51,12 @@ router.put('/exercises/:id', function(req, res, next) {
 });
 //HTTP delete single request
 router.delete('/exercises/:id', function(req, res, next) {
-  var query = {'_id': req.params.id};
-  Exercise.findOneAndDeleteQ(query)
+  Exercise.findByIdAndRemoveQ(req.params.id)
     .then(function(result) {
       res.json(result);
     })
     .catch(function(err) {
-      res.send(err);
+      res.json(err);
     })
     .done();
 });
