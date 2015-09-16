@@ -30,10 +30,15 @@ router.get('/exercises', function(req, res, next) {
 // API Get Single exercise
 router.get('/exercises/:id', function(req, res, next) {
   var query = {'_id': req.params.id};
-  exercise.findOne(query, function(err, exercise) {
-    res.json(exercise);
+  exercise.findByIdQ(query)
+    .then(function(data) {
+      res.json(data);
+    })
+    .catch(function(err) {
+      res.send(err);
+    })
+    .done();
   });
-});
 
 // API Put/edit Single exercise
 router.put('/exercises/:id', function(req, res, next) {
