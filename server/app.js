@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var config = require('./_config');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
