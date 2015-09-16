@@ -7,16 +7,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var config = require('./_config.js');
+var app = express();
+require('./models/exercise.js');
 
 // *** connect to MongoDB thru Mongoose *** //
-mongoose.connect('mongodb://localhost/exercises');
+mongoose.connect(config.mongoURI[app.settings.env]);
 
 // *** routes *** //
 var routes = require('./routes/index.js');
 var api = require('./routes/api.js');
-
-// *** express instance *** //
-var app = express();
 
 // *** view engine *** //
 var swig = new swig.Swig();
