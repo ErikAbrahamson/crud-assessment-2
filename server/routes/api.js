@@ -40,13 +40,26 @@ router.post('/exercises', function(req, res, next) {
 // HTTP put single request
 router.put('/exercises/:id', function(req, res, next) {
   var query = {'_id': req.params.id}, options = {new: true};
-  Exercise.findOneAndUpdateQ(query, options)
+  Exercise.findOneAndUpdateQ(query, req.body, options)
     .then(function(result) {
       res.json(result);
     })
     .catch(function(err) {
       res.send(err);
-    });
+    })
+    .done();
+});
+//HTTP delete single request
+router.delete('/exercises/:id', function(req, res, next) {
+  var query = {'_id': req.params.id};
+  Exercise.findOneAndDeleteQ(query)
+    .then(function(result) {
+      res.json(result);
+    })
+    .catch(function(err) {
+      res.send(err);
+    })
+    .done();
 });
 
 module.exports = router;
