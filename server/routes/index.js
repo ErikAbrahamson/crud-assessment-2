@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express'),
+  router = express.Router(),
+  mongoose = require('mongoose-q')(require('mongoose'), {spread:true}),
+  Exercise = require('../models/exercise.js');
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+  res.render('index', {title: 'CRUD 2'});
 });
 
 module.exports = router;

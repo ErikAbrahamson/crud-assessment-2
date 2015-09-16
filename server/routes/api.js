@@ -1,60 +1,23 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose-q')(require('mongoose'), {spread:true});
-var exercise = mongoose.model('exercises');
+var express = require('express'),
+  router = express.Router(),
+  mongoose = require('mongoose-q')(require('mongoose'), {spread:true}),
+  Exercise = require('../models/exercise.js');
 
-// SPA Render
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CRUD Assessment' });
-});
-
-// API Form Post
-router.post('/exercises', function(req, res, next) {
-  new exercise(req.body).save(function(err, success) {
-    res.render('index', { title: 'CRUD Assessment'});
-  });
-});
-
-// API Get Collection
 router.get('/exercises', function(req, res, next) {
-  exercise.findQ()
-    .then(function(data) {
-      res.json(data);
-    })
-    .catch(function(err) {
-      res.send(err);
-    })
+  Exercise.findQ()
+    .then(function (result) { res.json(result) })
+    .catch(function (err) {res.send(err) })
     .done();
 });
 
-// API Get Single exercise
-router.get('/exercises/:id', function(req, res, next) {
-  var query = {'_id': req.params.id};
-  exercise.findByIdQ(query)
-    .then(function(data) {
+router.post('/exercises', function(req, res, next) {
+  new Exercise(req.body)
+    .saveQ(function(err, data) {
+     if (err) {
+      res.json({'message': err});
+    } else {
       res.json(data);
-    })
-    .catch(function(err) {
-      res.send(err);
-    })
-    .done();
-  });
-
-// API Put/edit Single exercise
-router.put('/exercises/:id', function(req, res, next) {
-  var query = {'_id':req.params.id},
-    update = req.body, options = {new: true};
-    exercise.findOneAndUpdate(query, update, options, function(err, exercise) {
-      res.json(exercise);
     }
-  );
-});
-
-// API Delete Single exercise
-router.delete('/exercises/:id', function(req, res) {
-  var query = {'_id': {'$oid': req.params.id}};
-  exercise.findOneAndRemove(query, function(err, exercise) {
-    res.json(exercise);
   });
 });
 

@@ -1,5 +1,4 @@
 // *** main dependencies *** //
-require('./database');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -41,6 +40,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
 // *** error handlers *** //
 
 // development error handler
@@ -64,5 +64,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 module.exports = app;
