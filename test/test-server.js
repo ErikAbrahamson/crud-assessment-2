@@ -9,6 +9,22 @@ var chai = require('chai'),
 chai.use(chaiHttp);
 
 describe('Exercises', function() {
+
+  beforeEach(function(done) {
+    var dummyExercise = new Exercise({
+      name: 'Testing with Mocha and Chai',
+      description: 'Dummy description',
+      tags: ['Mocha','Chai','Node.js']
+    });
+    dummyExercise.save(function(err) {
+      done();
+    });
+  });
+
+  afterEach(function(done) {
+    Exercise.collection.drop();
+    done();
+  });
   // GET all
   it('should list ALL exercises on /api/v1/exercises GET', function(done) {
     chai.request(server)
@@ -20,6 +36,9 @@ describe('Exercises', function() {
         res.body[0].should.have.property('name');
         res.body[0].should.have.property('description');
         res.body[0].should.have.property('tags');
+        res.body[0].name.should.equal('Testing with Mocha and Chai');
+        res.body[0].tags[0].should.equal('Mocha');
+        res.body[0].tags[1].should.equal('Chai');
         done();
       });
     });

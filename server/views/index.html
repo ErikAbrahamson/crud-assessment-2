@@ -3,39 +3,62 @@
 {% block content %}
 
   <div class="container">
+
     <h1>{{ title }}</h1>
-    <form method="post" action="/api/exercises">
+    <br>
 
+    <form class="form-inline">
       <div class="form-group">
-        <label for="name">Exercise name</label>
-        <input type="text" class="form-control" name="name" id="name" placeholder="name">
+        <label>Exercise name</label>
+        <input type="text" id="exercise-name" name="name" class="form-control" required>
+        <label>Exercise description</label>
+        <input type="text" id="exercise-description" name="description" class="form-control" required>
+        <label>Exercise tags</label>
+        <input type="text" id="exercise-tags" name="tags" class="form-control" required>
       </div>
-
-      <div class="form-group">
-        <label for="description">Exercise description</label>
-        <input type="text" class="form-control" name="description" id="description" placeholder="description">
-      </div>
-
-      <div class="form-group">
-        <label for="tags">Exercise tags</label>
-        <input type="text" class="form-control" name="tags" id="tags" placeholder="tags">
-      </div>
-
-      <button id="submit" type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default">Save</button>
     </form>
-    <br><hr>
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Tags</th>
-          </tr>
-        </thead>
-      <tbody id="exercise-list"></tbody>
-     </table>
+
+    <hr><br>
+
+    <div id="results"></div>
+
+    <div id="exercises-table">
+
+      <h2>All Exercises</h2>
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+          <tbody id="all">
+          </tbody>
+        </table>
+      </div>
+
     </div>
+
+
+  <form id="edit-form">
+    <h2>Edit Exercise</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" id="edit-name">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="edit-description">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="edit-tags">
+    </div>
+    <button type="submit" class="btn btn-primary update-button">Update</button>
+    <button class="btn btn-success" id="cancel-edit">Cancel</button>
+  </form>
+
   </div>
 
 {% endblock %}

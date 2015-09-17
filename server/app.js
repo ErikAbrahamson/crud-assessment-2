@@ -11,7 +11,7 @@ var config = require('./_config.js');
 var app = express();
 require('./models/exercise.js');
 
-// *** connect to MongoDB thru Mongoose *** //
+// *** connect to MongoDB through Mongoose *** //
 mongoose.connect(config.mongoURI[app.settings.env]);
 
 // *** routes *** //
@@ -44,11 +44,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
-// *** error handlers *** //
-
-// development error handler
-// will print stacktrace
+// *** error handlers and stack trace *** //
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -59,8 +55,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -68,6 +62,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
