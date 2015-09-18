@@ -1,64 +1,29 @@
-{% extends 'layout.html' %}
-{% block title %}{% endblock %}
-{% block content %}
+<!DOCTYPE html>
+<html ng-app="crudApp">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
 
-  <div class="container">
-
-    <h1>{{ title }}</h1>
-    <br>
-
-    <form class="form-inline">
-      <div class="form-group">
-        <label>Exercise name</label>
-        <input type="text" id="exercise-name" name="name" class="form-control" required>
-        <label>Exercise description</label>
-        <input type="text" id="exercise-description" name="description" class="form-control" required>
-        <label>Exercise tags</label>
-        <input type="text" id="exercise-tags" name="tags" class="form-control" required>
-      </div>
-      <button type="submit" class="btn btn-default">Save</button>
-    </form>
-
-    <hr><br>
-
-    <div id="results"></div>
-
-    <div id="exercises-table">
-
-      <h2>All Exercises</h2>
-
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Tags</th>
-            </tr>
-          </thead>
-          <tbody id="all">
-          </tbody>
-        </table>
-      </div>
-
+    <div ng-controller="ExampleController">
+      <form novalidate class="simple-form">
+        Name: <input type="text" ng-model="user.name" /><br />
+        Description: <input type="email" ng-model="user.email" /><br />
+        Gender: <input type="radio" ng-model="user.gender" value="male" />male
+        <input type="radio" ng-model="user.gender" value="female" />female<br />
+        <input type="button" ng-click="reset()" value="Reset" />
+        <input type="submit" ng-click="update(user)" value="Save" />
+      </form>
+      <pre>user = {{user | json}}</pre>
+      <pre>master = {{master | json}}</pre>
     </div>
 
-
-  <form id="edit-form">
-    <h2>Edit Exercise</h2>
-    <div class="form-group">
-      <input type="text" class="form-control" id="edit-name">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="edit-description">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="edit-tags">
-    </div>
-    <button type="submit" class="btn btn-primary update-button">Update</button>
-    <button class="btn btn-success" id="cancel-edit">Cancel</button>
-  </form>
-
-  </div>
-
-{% endblock %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  </body>
+</html>

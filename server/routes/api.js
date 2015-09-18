@@ -62,4 +62,9 @@ router.delete('/exercises/:id', function(req, res, next) {
     .done();
 });
 
+// Angular Application loading single view file
+router.get('*', function(req, res) {
+  res.sendfile('./public/index.html');
+});
+
 module.exports = router;
