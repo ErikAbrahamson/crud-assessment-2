@@ -18,7 +18,7 @@ crudApp.controller('mainController', function($scope, $http) {
     $http.post('/api/v1/exercises/', $scope.formData)
       .success(function(data) {
         $scope.formData = {}; // clears the form every entry
-        $scope.exercises = data;
+        $scope.exercises.push(data);
         console.log(data);
       })
       .error(function(error) {
@@ -28,6 +28,17 @@ crudApp.controller('mainController', function($scope, $http) {
   // delete exercise
   $scope.deleteExercise = function(id) {
     $http.delete('/api/v1/exercises/' + id)
+      .success(function(data) {
+        $scope.exercises.splice(data, 1);
+        console.log(data);
+      })
+      .error(function(error) {
+        console.log('Error: ' + error);
+      });
+  };
+  // put exercise
+    $scope.editExercise = function(id) {
+    $http.put('/api/v1/exercises/' + id)
       .success(function(data) {
         $scope.exercises = data;
         console.log(data);

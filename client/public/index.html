@@ -16,20 +16,19 @@
     <div id="exercise-form" class="row">
 
       <form name="exerciseForm">
-
         <div class="form-group">
           <label for="name">Name</label>
-          <input ng-model="formData.name" name="name" id="name" type="text" class="form-control" placeholder="name">
+          <input ng-model="formData.name" name="name" id="name" type="text" class="form-control" placeholder="name" required>
         </div>
 
         <div class="form-group">
           <label for="description">Description</label>
-          <input ng-model="formData.description" name="description" id="description" type="text" class="form-control" placeholder="description">
+          <input ng-model="formData.description" name="description" id="description" type="text" class="form-control" placeholder="description" required>
         </div>
 
         <div class="form-group">
           <label for="tags">Tags</label>
-          <input ng-model="formData.tags" name="tags" id="tags" type="text" class="form-control" placeholder="tags">
+          <input ng-model="formData.tags" name="tags" id="tags" type="text" class="form-control" placeholder="tags" required>
         </div>
 
         <button ng-click="createExercise()" class="btn btn-primary">Submit</button>
@@ -49,10 +48,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="exercise in exercises">
+          <tr id="exercisePost" ng-repeat="exercise in exercises">
             <td>{{ exercise.name }}</td>
             <td>{{ exercise.description }}</td>
-            <td>{{ exercise.tags }}</td>
+            <td>{{ exercise.tags | filter: String }}</td>
             <td>
               <button class="btn-xs btn-info">Edit</button>
               &nbsp;
