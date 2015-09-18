@@ -15,7 +15,6 @@ require('./models/exercise.js');
 mongoose.connect(config.mongoURI[app.settings.env]);
 
 // *** routes *** //
-var routes = require('./routes/index.js');
 var api = require('./routes/api.js');
 
 // *** view engine *** //
@@ -34,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
 // *** main routes *** //
-app.use('/', routes);
 app.use('/api/v1/', api);
 
 // catch 404 and forward to error handler

@@ -3,6 +3,7 @@ var crudApp = angular.module('exercises', []);
 function mainController($scope, $http) {
   $scope.formData = {};
 
+  // init page with all todos
   $http.get('/api/v1/exercises')
     .success(function(data) {
       $scope.exercises = data;
@@ -11,7 +12,7 @@ function mainController($scope, $http) {
     .error(function(error) {
       console.log('Error: ' + error);
     });
-
+  // submits form values to node
   $scope.createExercise = function() {
     $http.post('/api/v1/exercises', $scope.formData)
       .success(function(data) {
@@ -20,7 +21,18 @@ function mainController($scope, $http) {
         console.log(data);
       })
       .error(function(error) {
-        console.log('Error: ' + data);
+        console.log('Error: ' + error);
+      });
+  };
+  // delete exercise
+  $scope.deleteExercise = function(id) {
+    $http.delete('/api/v1/exercises/' + id)
+      .success(function(data) {
+        $scope.exercises = data;
+        console.log(data);
+      })
+      .error(function(error) {
+        console.log('Error: ' + error);
       });
   };
 }
