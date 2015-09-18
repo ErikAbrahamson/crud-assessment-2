@@ -1,7 +1,6 @@
 var crudApp = angular.module('crudApp', []);
 
 crudApp.controller('mainController', function($scope, $http) {
-// function mainController($scope, $http) {
 
   $scope.formData = {};
 
