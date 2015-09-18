@@ -15,21 +15,21 @@
 
     <div id="exercise-form" class="row">
 
-      <form>
+      <form name="exerciseForm">
 
         <div class="form-group">
           <label for="name">Name</label>
-          <input ng-model="formData.text" id="name" type="text" class="form-control" placeholder="name">
+          <input ng-model="formData.name" name="name" id="name" type="text" class="form-control" placeholder="name">
         </div>
 
         <div class="form-group">
           <label for="description">Description</label>
-          <input ng-model="formData.text" id="description" type="text" class="form-control" placeholder="description">
+          <input ng-model="formData.description" name="description" id="description" type="text" class="form-control" placeholder="description">
         </div>
 
         <div class="form-group">
           <label for="tags">Tags</label>
-          <input ng-model="formData.text" name="tags" type="text" class="form-control" placeholder="tags">
+          <input ng-model="formData.tags" name="tags" id="tags" type="text" class="form-control" placeholder="tags">
         </div>
 
         <button ng-click="createExercise()" type="submit" class="btn btn-primary">Submit</button>
@@ -37,6 +37,7 @@
 
     </div>
     <hr><br>
+
     <div class="row" id="exercise-list">
       <table class="table table-striped">
         <thead>

@@ -1,6 +1,8 @@
-var crudApp = angular.module('exercises', []);
+var crudApp = angular.module('crudApp', []);
 
-function mainController($scope, $http) {
+crudApp.controller('mainController', function($scope, $http) {
+// function mainController($scope, $http) {
+
   $scope.formData = {};
 
   // init page with all todos
@@ -14,7 +16,7 @@ function mainController($scope, $http) {
     });
   // submits form values to node
   $scope.createExercise = function() {
-    $http.post('/api/v1/exercises', $scope.formData)
+    $http.post('/api/v1/exercises/', $scope.formData)
       .success(function(data) {
         $scope.formData = {}; // clears the form every entry
         $scope.exercises = data;
@@ -35,4 +37,4 @@ function mainController($scope, $http) {
         console.log('Error: ' + error);
       });
   };
-}
+});
