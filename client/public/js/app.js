@@ -4,7 +4,6 @@ crudApp.controller('mainController', function($scope, $http) {
 
   $scope.formData = {};
 
-  // init page with all todos
   $http.get('/api/v1/exercises')
     .success(function(data) {
       $scope.exercises = data;
@@ -13,7 +12,7 @@ crudApp.controller('mainController', function($scope, $http) {
     .error(function(error) {
       console.log('Error: ' + error);
     });
-  // submits form values to node
+
   $scope.createExercise = function() {
     $http.post('/api/v1/exercises/', $scope.formData)
       .success(function(data) {
@@ -25,7 +24,7 @@ crudApp.controller('mainController', function($scope, $http) {
         console.log('Error: ' + error);
       });
   };
-  // delete exercise
+
   $scope.deleteExercise = function(id) {
     $http.delete('/api/v1/exercises/' + id)
       .success(function(data) {
@@ -36,7 +35,7 @@ crudApp.controller('mainController', function($scope, $http) {
         console.log('Error: ' + error);
       });
   };
-  // put exercise
+
     $scope.editExercise = function(id) {
     $http.put('/api/v1/exercises/' + id)
       .success(function(data) {
