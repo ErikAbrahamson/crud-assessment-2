@@ -39,7 +39,6 @@ router.post('/exercises', function(req, res, next) {
 });
 // HTTP put single request
 router.put('/exercises/:id', function(req, res, next) {
-
   var query = {'_id': req.params.id}, options = {new: true};
   Exercise.findOneAndUpdateQ(query, req.body, options)
     .then(function(result) {
