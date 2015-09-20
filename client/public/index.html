@@ -52,13 +52,15 @@
             <td>{{ exercise.description }}</td>
             <td>{{ exercise.tags | filter: String }}</td>
             <td>
-              <button class="btn-xs btn-info">Edit</button>
+              <button ng-click="showModal" class="btn-xs btn-info">Edit</button>
               &nbsp;
               <button ng-click="deleteExercise(exercise._id)" class="btn-xs btn-danger">Delete</button>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <ng-include src="'partials/modal.html'"></ng-include>
     </div>
 
   </div>
